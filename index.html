@@ -2,203 +2,349 @@
 <html lang="ru">
 
 <head>
-    <meta charset="utf-8">
-    <title>Денис</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="stylesheet" href="css/calculationcss.css" type="text/css"/>
-    <!--<script src="js/jquery.js"></script>-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Всё о хоби :: Документация на одно из увлечений "Умный дом"</title>
+  <link rel="canonical" href="https://ws1997.ru/index.html">
+  <link rel="next" href="ocis_releases.html">
+  <meta name="description" content="Всё о моих хоби, Документация на одно из увлечений 'Умный дом'.">
+  <meta name="generator" content="Antora 3.2.1">
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <link rel="stylesheet" href="./pagefind/pagefind-component-ui.css">
+  <link rel="stylesheet" href="./assets/css/ws1997.css">
+  <link rel="stylesheet" href="./assets/css/tabs.css">
+  <link rel="stylesheet" href="./assets/css/medium-zoom.css">
+  <link rel="stylesheet" href="./assets/css/landing-page.css">
+  <script src="./assets/js/go-redirect.js" data-site-root="/"></script>
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/img/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="./assets/img/favicon-16x16.png" sizes="16x16" type="image/png">
 </head>
 
-<body>
-<div class="">
-	<ul class="">
-    	<li class="" onclick="location.href = 'https://ws1999.ru'">
-        <img src="/image/ya.jpg" style="width: 40px; height: 40px" alt="" /><a>Дом</a></li>
-    </ul>
-</div>
-    <!--Создаём таблицу контейнер, которой задаём следующее
-оформление: <a class=""
-border="1" - рамка вокруг контейнера. Увеличив число, можно увеличить толщину рамки.
-align="center" - размещаем контейнер по центру экрана.
-rules="rows" - убираем двойную рамку.
-style="width:60%;" - добавляем стилевое свойства, делающее
-контейнер и весь сайт "резиновым".
-Сделать полноценный адаптивный дизайн, этим способом невозможно.-->
-    <table border="1" align="center" rules="rows" style="width:60%;">
-        <!--Создаём строку-->
-        <tr>
-            <!--Создаём ячейку строки-->
-            <td>
-                <!--ШАПКА САЙТА-->
-                <!--Оформление:border="1" - двойная рамка толщиной в 1px
-background="images/168.png" - картинка в шапке сайта, если требуется.
-Адрес картинки вы должны вставить свой.
-bgcolor="#7FFFD4" - фоновый цвет в шапке, если нет картинки.
-cellpadding="10" - отступ содержимого от рамки не менее 10px.
-style="width:100%; border-radius:5px;" - добавляем "резиновость"
-и закругляем уголки рамки-->
+<body class="article landing-page">
+  <script
+    type="module">import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs'; mermaid.initialize({ "startOnLoad": true }); </script>
+  <header class="header">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a class="navbar-item navbar-logo" href="https://ws1997.ru">
+          <img src="./assets/img/logo_1.svg" alt="Всё подряд ..." class="navbar-logo-img">
+          <span class="navbar-title">Хобби + всё про мои самоделки</span>
+        </a>
+        <!-- <div class="navbar-item search hide-for-print">
+        <pagefind-config bundle-path="/pagefind/"></pagefind-config>
+        <pagefind-modal-trigger></pagefind-modal-trigger>
+        <pagefind-modal reset-on-close></pagefind-modal>
+      </div> -->
+      </div>
+      <div id="topbar-nav" class="navbar-menu">
+        <div class="navbar-end"></div>
+      </div>
+    </nav>
+  </header>
+  <div class="body">
+    <div class="nav-container" data-component="ROOT" data-version="">
+      <aside class="nav">
+        <div class="panels">
+          <div class="nav-panel-menu is-active" data-panel="menu">
+            <nav class="nav-menu">
+              <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+              <h3 class="title"><a href="index.html">Главная страница-о "проделках"</a></h3>
+              <ul class="nav-list">
+                <li class="nav-item is-current-page" data-depth="0">
+                  <button class="nav-item-toggle"></button>
+                  <a class="nav-link" href="index.html">Описания "проделок" и прочего ...</a>
+                  <ul class="nav-list">
+                    <li class="nav-item" data-depth="1">
+                      <button class="nav-item-toggle"></button>
+                      <span class="nav-text">Умный дом (версии)</span>
+                      <ul class="nav-list">
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="ha_release.html">Версии (с пояснениями)</a>
+                        </li>
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="ha_release_notes.html">Описания, схемы, программы</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item" data-depth="1">
+                      <button class="nav-item-toggle"></button>
+                      <span class="nav-text">Инфраструктура ЛВС</span>
+                      <ul class="nav-list">
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="it_release.html">Варианты и изменения</a>
+                        </li>
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="it_release_notes.html">Ссылки с кратким описанием</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <!-- !!!!!!!!!!!!!! -->
+                    <li class="nav-item" data-depth="1">
+                      <button class="nav-item-toggle"></button>
+                      <span class="nav-text">Увлечения</span>
+                      <ul class="nav-list">
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="hobby_release.html">Разное о разном</a>
+                        </li>
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="hobby_release_notes.html">Краткое описание и ссылки</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <!-- !!!!!!!!!!!!!!!!! -->
+                     <!-- ^^^^^^^^^^^^^^ -->
+                    <li class="nav-item" data-depth="1">
+                      <button class="nav-item-toggle"></button>
+                      <span class="nav-text">Backend</span>
+                      <ul class="nav-list">
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="backend.html">Мусор и всякая всячина</a>
+                        </li>
+                      </ul>
+                    </li>                      
+                      <!-- ^^^^^^^^^^^^^^^^^ -->
+                  </ul>
+                </li>
+                <li class="nav-item" data-depth="0">
+                  <button class="nav-item-toggle"></button>
+                  <span class="nav-text">Документация</span>
+                  <ul class="nav-list">
+                    <li class="nav-item" data-depth="1">
+                      <button class="nav-item-toggle"></button>
+                      <span class="nav-text">Умный дом</span>
+                      <ul class="nav-list">
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="ha/index.html">Варианты</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item" data-depth="1">
+                      <button class="nav-item-toggle"></button>
+                      <span class="nav-text">Инфроструктура</span>
+                      <ul class="nav-list">
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="it/index.html">ИБП и схема ЛВС</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="nav-item" data-depth="1">
+                      <button class="nav-item-toggle"></button>
+                      <span class="nav-text">Увлечения</span>
+                      <ul class="nav-list">
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="hobby/kite/index.html">Кайт</a>
+                        </li>
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="hobby/ski/index.html">Горные лыжи</a>
+                        </li>
+                        <li class="nav-item" data-depth="2">
+                          <a class="nav-link" href="hobby/travel/index.html">Путешествия</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <!-- №№№№№№№№№№№№№№№№№№№№№№№№№№№ -->
+                <li class="nav-item" data-depth="0">
+                  <a class="nav-link" href="help_for_me.html">Помощь в корректирровке ...</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="nav-panel-explore" data-panel="explore">
+          </div>
+      </aside>
+    </div>
+    <!-- """""""""""""""""""""""""" -->
 
-                <table border="1" background="" bgcolor="#7FFFD4" cellpadding="10"
-                    style="width:100%; border-radius:5px;">
-                    <td>
+    <!-- """""""""""""""""""""""""" -->
+    <main class="article">
+      <div class="toolbar" role="navigation">
+        <button class="nav-toggle"></button>
+        <a href="index.html" class="home-link is-current"></a>
+        <nav class="breadcrumbs" aria-label="breadcrumbs">
+          <ul>
+            <li><a href="index.html">Главная страница-о "проделках"</a></li>
+            <li><a href="index.html">Releases by Product</a></li>
+          </ul>
+        </nav>
+        <div class="edit-this-page"><a href="https://github.com/vladmilsh/test">Редактировать эту страницу</a></div>
+      </div>
+      <div class="content">
+        <aside class="toc sidebar" data-title="Contents" data-levels="2">
+          <div class="toc-menu"></div>
+        </aside>
+        <article class="doc">
+          <h1 class="page">Описания, хобби, "Умный дом"</h1>
+          <div id="preamble">
+            <div class="sectionbody">
+              <div class="paragraph">
+                <p>Приглашаю ознакомится. Данный сайт создан для консолидации всех материалов, накопившихся за несколько
+                  лет. На этой странинице есть ссылки на все разделы сайта. Ранее все материалы были в виде отдельных
+                  заметок, статей, "напоминалок" и т.д.</p>
+              </div>
+            </div>
+          </div>
+          <!-- @@@@@@@@@@@@@@@@@@ -->
+          <div class="sect1">
+            <h2 id="get-started"><a class="anchor" href="#get-started"></a>Итак ...</h2>
+            <div class="sectionbody">
+              <div class="admonitionblock tip">
+                <table>
+                  <tr>
+                    <td class="icon">
+                      <i class="fa icon-tip" title="Tip"></i>
+                    </td>
+                    <td class="content">
+                      <div class="ulist">
+                        <ul>
+                          <li>
+                            <!-- <p><strong>Здесь всё про реализации "Умного дома"</strong> — Старт на стареньком нетбуке, далее Raspberry Pi 4B и полноценная инфраструктура для всех сервисов <a href="ocis/raspberry/pi4.html" class="xref page">Описания, реализации, схемы</a> см.</p> -->
+                            <p><strong>Здесь всё про реализации "Умного дома"</strong> — Старт на стареньком нетбуке,
+                              далее Raspberry Pi 4B и полноценная инфраструктура для всех сервисов <a
+                                href="ha/raspberry/index.html" class="xref page">Описания, реализации, схемы</a> см.</p>
+                          </li>
+                          <li>
+                            <p><strong>Здесь всё о моих хобби</strong> — Основные увлечения: путешествия, кайтсёрфинг,
+                              самоделки <a href="hobby/index.html" target="_blank" rel="noopener">ссылки, фото, видео и
+                                т.д.</a>см.</p>
+                          </li>
+                          <li>
+                            <p><strong>Разное ...</strong> — Бэкэнд и "хранилка" с почти мусором (первая разработка) <a
+                                href="https://new.ws1997.ru" target="_blank" rel="noopener">new.ws1997.ru</a>, все, что
+                              не понадобится в обозримом будущем.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="sect1">
+            <h2 id="documentation-by-product"><a class="anchor" href="#documentation-by-product"></a>Описания</h2>
+            <div class="sectionbody">
+              <div class="sect2">
+                <h3 id="owncloud-infinite-scale-ocis"><a class="anchor" href="#owncloud-infinite-scale-ocis"></a>"Умный
+                  дом"</h3>
+                <div class="paragraph">
+                  <p>Реализация системы умного дома (ha) &#8217;s cloud-native, и его развитие/трансформация. Начал с
+                    отдельных докер контейнеров на выделенной машине, интерсный вариант, не практично с точки зрения
+                    эксплуатации. Далее raspberry с HAOS, а затем виртуальная машина</p>
+                </div>
+                <div class="paragraph">
+                  <p><a href="ha/raspberry/index.html" class="xref page">Raspberry Pi с HAOS самый надежный и простой
+                      вариант</a> но, не самый практичный для расширенной версии "умного дома". Варианты: </p>
+                </div>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p><a href="ha/raspberry/admin/" class="xref page">raspberry PI 4B</a></p>
+                    </li>
+                    <li>
+                      <p><a href="ha/vm/admin/index.html" class="xref page">На виртуальной машине</a></p>
+                    </li>
+                    <li>
+                      <p><a href="ha/docker/index.html" class="xref page">В docker</a></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sect2">
+                <h3 id="owncloud-classic-server"><a class="anchor" href="#owncloud-classic-server"></a>Инфраструктура
+                </h3>
+                <div class="paragraph">
+                  <p>Этапы развития инфраструктуры ЛВС с квартире. Начало, - просто роутер провайдера + "витая пара" по
+                    комнатам и WiFi. Следующий этап, - роутер провайдера, коммутатор, гипервизор (PVE), выделенная
+                    машина под ВЕБ сервер, raspberry pi 4B, источники бесперебойного питания, принтеры.</p>
+                </div>
+                <div class="paragraph">
+                  <p><a href="it/admin/index.html" class="xref page">Описание вариантов</a>, варианты:</p>
+                </div>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p><a href="it/11/index.html" class="xref page">ИБП</a></p>
+                    </li>
+                    <li>
+                      <p><a href="it/12/index.html" class="xref page">ЛВС</a></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sect2">
+                <h3 id="desktop-app"><a class="anchor" href="#desktop-app"></a>Хобби !!!!!!!!</h3>
+                <div class="paragraph">
+                  <p>Мои увлечения, - горные лыжи, кайтбординг, просто путешествия по мало посещаемым маршрутам</p>
+                </div>
+                <div class="paragraph">
+                  <p><a href="desktop/7.1/index.html" class="xref page">Здесь лежат фото и видео и некотрые комментарии
+                      (не хватает времени на комменты).</a> Разложено по увлечениям:</p>
+                </div>
+                <div class="ulist">
+                  <ul>
+                    <li>
+                      <p><a href="hobby/kite/index.html" class="xref page">Кайт</a></p>
+                    </li>
+                    <li>
+                      <p><a href="hobby/ski/index.html" class="xref page">Горные лыжи</a></p>
+                    </li>
+                    <li>
+                      <p><a href="hobby/travel/index.html" class="xref page">Путешествия</a></p>
+                    </li>
+                    <li>
+                      <p><a href="hobby/trash/index.html" class="xref page">Разное</a></p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-                        <!--Создаём строку таблицы-->
 
-                        <!--Создаём столбец таблицы-->
-                    <th>
-                        <!--Содержание ячейки столбца-->
-                        <h2>Перевод таблиц Excel в SQL</h2>
-                        <h3>Пока получается, правда не так быстро как хотелось бы</h3>
-                        <!--Закрываем таблицу-->
-                    </th>
-
-            </td>
-            <td>
-                <a href="upload/load.html">Загрузка файлов данных! Введи пароль логин и переходите на вкладку -> </a>
-            </td>
-    </table>
-
-    <!--ОСНОВНОЙ КОНТЕНТ-->
-
-    <table border="1" bgcolor="#e6e6fa" cellpadding="10" style="width:100%; border-radius:5px;">
-        <!--Создаём строку-->
-        <tr>
-            <!--Создаём ячейку Оформление:
-rowspan="2" - объединяем две ячейки в одну.
-Число объединяемых ячеек по числу ячеек в сайдбаре.
-style="width:80%" - основной контент занимает 80% всей площади,
-оставшиеся 20% для сайдбара-->
-            <td rowspan="2" style="width:80%">
-                <h2>Описание работы с ПО</h2>
-                <!--Начинаем абзац с красной строки-->
-                <p style="text-indent:20px">
-                    На текущий момент работают ссылки "Вывод результатов загрузки "Детальные данные"", "Вывод результатов загрузки "Связка"", "Вывод результатов загрузки "Себестоимость"",
-                    "Вывод результатов загрузки "Себес_1C"", "Вывод результатов загрузки "Связка"", "Вывод результатов всех расчётов из таблицы "Расчёт"(в данную табл сведены все расчётные 
-                    данные). Все файлы из последней полученной таблицы загружены. Загрузка новых таблиц производится следующим образом: переходим в "Загрузку файлов, расчет полей"
-                    и делаем по инструкции на странице.      
-                </p>
-                <p style="text-indent:20px"><span class="specialblock">Обнаружил : в столбцах "Возврат комиссии за возврат"
-                    и "Комиссия ВБ с учетом возвратов" одинаковые формулы, - использовал фомулу из прошлой таблицы; значение столбца "Неделя" рассчитываю из столбца "Дата продажи".</span>
-                </p>
-                <p style="text-indent:20px">
-                </p>
-                <p style="text-indent:20px">
-                    Осталось сделать вывод итоговой таблицы "Результат расчета" в удобном для анализа виде. Пока не опробовал вывод расчетных данных в удобочитаемом виде. Пока отложил
-                    до "лучших" времен - появилаось несколько задач, которые надо решить неотлагательно.
-                </p>
-                <!--Закрываем ячейку-->
-            </td>
-
-            <!--САЙДБАР-->
-
-            <!--Создаём ячейку сайдбара-->
-            <td bgcolor="#e6e6fa">
-                <h3>Меню</h3>
-                <!--Абзац для ссылки на страницу сайта-->
-                <p>
-                    <!--Ссылка на страницу сайта-->
-                    <!--<a href="calculation.php">
-                        Картинка маркера перед названием страницы
-                        <img src="/image/ya.jpg" width="50" height="50">-->
-                        <!--Название страницы style="margin-left:5px;" - отступ названия от маркера-->
-                        <!--<span style="margin-left:5px;">Результат расчета</span>
-                    </a>-->
-                    <!--Закрываем абзац-->
-                </p>
-                <p>
-                    <!--Ссылка на страницу сайта
-                                <a href="test.php">
-                                    Картинка маркера перед названием страницы
-                                    <img src="http://trueimages.ru/img/00/06/f4fffdb5.png">
-                                    Название страницы style="margin-left:5px;" - отступ названия от маркера
-                                    <span style="margin-left:5px;">Тест</span>
-                                </a>
-                                Закрываем абзац-->
-                </p>
-                <!--<p>
-                    <a href=".html">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Загрузка файлов, расчет полей</span;></a>
-                </p>-->
-                <p>
-                    <a href="detal_data.php">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Вывод результатов загрузки "Детальные данные"</span;></a>
-                </p>
-                <p>
-                    <a href="transfers.php">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Вывод результатов загрузки "Перечисления"</span></a>
-                </p>
-                <p>
-                    <a href="bundl.php">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Вывод результатов загрузки "Связка"</span></a>
-                </p>
-                <p>
-                    <a href="test.php">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Тест</span></a>
-                </p>
-                <p>
-                    <a href="cost_price.php">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Вывод результатов загрузки "Себестоимость"</span></a>
-                </p>
-                <p>
-                    <a href="cost_price_1C.php">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Вывод результатов загрузки "Себес_1C"</span></a>
-                </p>
-                <p>
-                    <a href="calculation_d_d.php">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Вывод результатов всех расчётов из таблицы "Результат расчета"</span></a>
-                </p>
-                <p>
-                    <a href="analysis_new.html">
-                        <img src="/image/97Pi.gif" width="30" height="30">
-                        <span style="margin-left:5px;">Вывод результатов для анализа. Тест</span></a>
-                </p>
-                <!--Закрываем строку Меню-->
-            </td>
-        </tr>
-        <!--Создаём строку с дополнительной информацией-->
-        <tr>
-            <!--Ячейка с дополнительной информацией-->
-            <!--<td bgcolor="#e6e6fa" align="center">
-                            <h3>Общая информация</h3>
-                            <p>Думаю к концу августа закончить )))</p>-->
-            <!--Закрываем ячейку с общей 
-    </table>
-
-    <!--ПОДВАЛ-->
-
-    <!--Создаём таблицу подвала-->
-    <table border="1" bgcolor="#7FFFD4" height="100" cellpadding="10" style="width:100%; border-radius:5px;">
-        <!--Создаём строку.-->
-        <h3>Общая информация</h3>
-        <tr>
-            <!--Создаём столбец-->
-            <p>Работаю, создаю frontend, backend закончен. Надо "погрузиться" в новый для меня язык программирования (((. Кстати очень 
-            интересный язык. Освобожусь и приложу все силы, чтобы дописать проект!!!
-            </p>
-            <th>
-                <!--<h3>Что то нужное ...</h3>-->
-                
-
-                    <!--Закрываем таблицу подвала. При желании в подвале можно
-сделать несколько строк и столбцов-->
-            </th>
-        </tr>
-    </table>
-    <!--Закрываем таблицу контейнера-->
-    </td>
-    </tr>
-    </table>
-
+            </div>
+          </div>
+          <nav class="pagination">
+            <span class="next"><a href="ha_release.html">Реализации</a></span>
+          </nav>
+        </article>
+      </div>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">
+        <a href="https://ws1997.ru/"><img src="./assets/img/logo_1.svg" alt="ws1997"></a>
+      </div>
+      <div class="row-full">
+        <div class="col-third">
+          <div class="footer-nav">
+            <h4>Всё про самоделки</h4>
+            <ul id="menu-about" class="menu">
+              <li class="menu-news"><a href="https://ws1997.ru/news/">Интересное</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-third">
+          <div class="footer-nav">
+            <h4>Информация</h4>
+            <ul id="menu-support-and-documentation" class="menu">
+              <li class="menu-faq"><a href="https://ws1997.ru/faq/">FAQ</a></li>
+              <li class="menu-help"><a href="https://ws1997.ru/docs-guides/">Доки</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p>&copy; Copyright 2011-2026, just I.</p>
+    </div>
+  </footer>
+  <script id="site-script" src="./assets/js/site.js" data-ui-root-path="./assets"></script>
+  <script src="./assets/js/nav-expand.js"></script>
+  <script async src="./assets/js/vendor/highlight.js"></script>
+  <script src="./pagefind/pagefind-component-ui.js" type="module"></script>
+  <script src="./assets/js/tabs.js"></script>
+  <script defer src="./assets/js/vendor/medium-zoom.min.js"></script>
+  <script defer src="./assets/js/medium-zoom-init.js"></script>
 </body>
 
 </html>
