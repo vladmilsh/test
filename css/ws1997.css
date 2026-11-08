@@ -1,0 +1,377 @@
+/*
+ * ownCloud supplemental branding on top of the stock Antora default UI.
+ * Kept intentionally small: brand palette + logo sizing + Pagefind modal theme.
+ */
+
+:root {
+  /* ownCloud brand palette */
+  --oc-navy: #17b155;       /* primary brand navy (navbar, footer, headings) */
+  --oc-navy-deep: #052550;  /* darker navy for hover/focus surfaces */
+  --oc-teal: #06e3bd;       /* signature mint/teal accent */
+  --oc-orange: #e56f35;     /* secondary accent */
+  --oc-amber: #f4b223;      /* secondary accent / highlights */
+  --oc-link: #4e85c8;       /* corporate link blue */
+  --oc-link-hover: #364b68; /* corporate link blue, hover */
+
+  /* map the brand palette onto the stock default UI custom properties */
+  --color-brand: var(--oc-navy);
+  --navbar-background: var(--oc-navy);
+  --link-color: var(--oc-link);
+  --link-color-hover: var(--oc-link-hover);
+  /* block/table caption colour -- stock default UI uses a neutral grey */
+  --color-title: var(--oc-navy);
+
+  /* Typefaces (see the @font-face block below). The stock default UI hardcodes
+     `Roboto` / `Roboto Mono` in its selectors with no custom property, so these
+     exist for our own rules and for --pf-font to read. */
+  --body-font-family: "DM Sans", sans-serif;
+  --monospace-font-family: "Roboto Mono", monospace;
+
+  /* Pagefind Component UI theming — the modal/trigger web components reset
+     inherited styles (all: initial) and read only their own --pf-* custom
+     properties, so brand overrides must live on :root.
+     See https://pagefind.app/docs/components/ for the full variable list. */
+  --pf-font: var(--body-font-family, inherit);
+  --pf-text: #19191c;
+  --pf-background: #fff;
+  --pf-border: #dbdbdb;
+  --pf-border-focus: var(--oc-link);
+  --pf-border-radius: 0.15rem;
+  --pf-hover: #f0f0f0;
+  --pf-mark: var(--oc-teal);
+}
+
+/* ---------------------------------------------------------------------------
+   Typefaces: DM Sans for text, Roboto Mono for code.
+
+   The .woff2 files in ui/supplemental/font/ are the latin subsets taken verbatim
+   from @fontsource/dm-sans and @fontsource/roboto-mono (v5.3.0, SIL OFL-1.1 --
+   see OFL-dm-sans.txt / OFL-roboto-mono.txt next to them). They are vendored
+   rather than pulled in as npm packages so no new dependency or build step is
+   needed; refresh them by hand from the same Fontsource version if bumping.
+
+   Only the latin subset ships. Stock also carries cyrillic Roboto faces; the
+   documentation is English, and any non-latin glyph simply falls back to the
+   system sans-serif per character. `font-display: swap` matches Fontsource's own
+   stylesheets. No .woff fallback -- every browser Antora 3 targets has woff2.
+
+   THE 600 => BOLD MAPPING IS DELIBERATE. The stock UI declares Roboto *Medium*
+   (500) under `font-weight: 600` and then asks for 600 in ~19 places (headings
+   h3/h4, block titles, captions, `b`/`strong`/`th`, nav current page, ...), so
+   everything nominally bold rendered as Medium. The retired docs-ui bundle set
+   --body-font-weight-bold to 700 and shipped a real 700 face, so all of those
+   were properly bold. Pointing both 600 and 700 at the Bold file reproduces that
+   in one place instead of overriding all 19 selectors -- and it is exactly the
+   mechanism the stock UI itself uses.
+   --------------------------------------------------------------------------- */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(../font/dm-sans-latin-400-normal.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(../font/dm-sans-latin-400-italic.woff2) format("woff2");
+}
+
+/* 600 and 700 both resolve to Bold -- see the note above */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 700;
+  src: url(../font/dm-sans-latin-700-normal.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600 700;
+  src: url(../font/dm-sans-latin-700-italic.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(../font/roboto-mono-latin-400-normal.woff2) format("woff2");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600 700;
+  src: url(../font/roboto-mono-latin-700-normal.woff2) format("woff2");
+}
+
+/* Retarget the four stock selectors that name a family. Each ties with the stock
+   rule on specificity and wins on load order (owncloud.css comes after
+   site.css); everything else inherits from `body`. The stock Roboto @font-face
+   declarations stay in site.css but go unreferenced, so those files are never
+   fetched. */
+body {
+  font-family: var(--body-font-family);
+}
+
+code,
+kbd,
+pre {
+  font-family: var(--monospace-font-family);
+}
+
+.doc .source-toolbox,
+.doc .conum[data-value] {
+  font-family: var(--body-font-family);
+}
+
+/* Site-wide font scale, ported from the retired docs-ui bundle
+   (docs-ui/src/css/owncloud-vars.css, --body-font-size / --body-font-size--desktop).
+   ownCloud renders one step larger than the stock default UI: 17/18px becomes
+   18.4/19.2px. The stock UI hardcodes these in `html` with no custom property to
+   hook into, so the rules are restated here; owncloud.css loads after site.css
+   (see partials/head-styles.hbs), so an equal-specificity `html` selector wins.
+
+   Everything else follows automatically: both UIs use the same rem multipliers
+   (an 18-unit rem base), so raising the root em rescales body text, tables,
+   headings and the rem-based layout widths together -- e.g. the env var table
+   goes from 15px back to 16px.
+
+   Scoped to `screen` on purpose: the old UI left the print size alone, and an
+   unscoped `html` rule here would beat the stock `@media print` override
+   further up the cascade. */
+@media screen {
+  html {
+    font-size: 1.1em; /* stock: 1.0625em */
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 1.2em; /* stock: 1.125em */
+  }
+}
+
+/* ownCloud navbar is brand navy */
+.navbar {
+  background-color: var(--oc-navy);
+}
+
+.navbar-logo-img {
+  height: 1.75rem;
+  max-height: none;
+}
+
+.navbar .navbar-item,
+.navbar .navbar-link {
+  color: #fff;
+}
+
+.navbar .navbar-item:hover,
+.navbar .navbar-link:hover {
+  background-color: var(--oc-navy-deep);
+  color: #540000;
+}
+
+/* let the Pagefind trigger sit comfortably in the navbar */
+.navbar-item.search {
+  display: flex;
+  align-items: center;
+}
+
+/* Site title in the top bar, next to the logo (matches doc.owncloud.com).
+   The stock default UI has no .navbar-title rule, so define it here. */
+.navbar-title {
+  color: #fff;
+  font-size: 0.88889rem;
+  line-height: 1.2;
+  padding-left: 0.75rem;
+  border-left: 1px solid hsla(0, 0%, 100%, 0.35);
+}
+
+/* Hide the title on narrow screens so it never crowds the logo/search. */
+@media screen and (max-width: 768.5px) {
+  .navbar-brand .navbar-logo .navbar-title {
+    display: none;
+  }
+}
+
+/* Section headings, ported from the retired docs-ui bundle
+   (docs-ui/src/css/owncloud.css). docs-ui set --heading-font-color to the brand
+   navy and gave every heading a 2rem top margin; the stock default UI hardcodes
+   a near-black #191919 and half the top margin, so e.g. the "Environment
+   Variables" heading above the service env var tabsets rendered dark grey and
+   sat too close to the preceding block.
+
+   `hyphens: none` keeps headings off the `hyphens: auto` set further down. */
+.doc h1,
+.doc h2,
+.doc h3,
+.doc h4,
+.doc h5,
+.doc h6 {
+  color: var(--oc-navy); /* --heading-font-color; stock: #191919 */
+  hyphens: none;
+  margin: 2rem 0 0; /* stock: 1rem 0 0 */
+}
+
+/* Tables in the doc body, ported from the retired docs-ui bundle
+   (docs-ui/src/css/owncloud.css). The stock default UI renders AsciiDoc tables
+   as a full 1px grid because Asciidoctor emits `frame-all grid-all`; ownCloud
+   instead shows horizontal row rules only, with a light grey header band. This
+   matters most for the wide environment-variable tables under
+   deployment/services/s-list/.
+
+   These rules rely on owncloud.css loading after site.css (see
+   partials/head-styles.hbs) -- most of them tie with a stock rule on
+   specificity and win on source order only, exactly as in the old bundle. */
+
+/* drop the grid/frame borders the stock UI draws for frame-all/grid-all;
+   the row rules below replace them */
+.doc table.tableblock,
+.doc table.tableblock > * > tr > * {
+  border: unset;
+}
+
+/* header row: grey band, no visible rule against the band itself */
+.doc table.tableblock th {
+  border-bottom: 2.5px solid #f7f8f7; /* no var; literal in docs-ui too */
+  background: #f7f8f7; /* no var; literal in docs-ui too */
+}
+
+/* body cells: horizontal rules only */
+.doc table.tableblock td {
+  border-top: 1px solid #ddd; /* no var; literal in docs-ui too */
+  border-bottom: 1px solid #ddd; /* no var; literal in docs-ui too */
+}
+
+/* stock sets `word-wrap: anywhere`, which breaks long env var names
+   mid-token and starves the Name column of width */
+.doc td.tableblock > .content {
+  word-wrap: unset;
+}
+
+/* hyphenate instead, so long Description cells still wrap */
+.doc p,
+.doc .tableblock,
+.doc .content {
+  hyphens: auto;
+}
+
+.doc .tableblock p {
+  font-size: inherit;
+}
+
+/* smaller, tighter inline code chips -- the Name column is entirely code */
+.doc p code,
+.doc thead code,
+.doc .colist > table code {
+  font-size: 0.9em;
+  border-radius: 0.2rem;
+  padding: 0.075rem 0.25rem 0.125rem;
+}
+
+/* stock colours the caption neutral grey; ownCloud uses the title colour */
+.doc table.tableblock caption {
+  color: var(--color-title);
+}
+
+/* Keep the right-hand "Contents" sidebar against the right window edge.
+ *
+ * At >= 1024px the stock UI lays `.body` out as a flex row of
+ * nav-container (15rem, fixed) | .doc (flex: auto, max-width: 46rem) |
+ * aside.toc.sidebar (flex: 0 0 12rem). Below ~1478px the ToC tracks the window
+ * because `.doc` is still growing; at that width `.doc` hits its 46rem cap, the
+ * row stops consuming space and -- flex items being packed at `flex-start` --
+ * all further width piles up unused to the right of the ToC. On a 2545px
+ * viewport that left the ToC frozen ~1067px short of the right edge.
+ *
+ * `margin-left: auto` on the last flex item absorbs that free space instead, so
+ * the ToC keeps moving right past the cap. Below the cap the free space is 0,
+ * so the auto margin resolves to 0 and narrow layouts are untouched. The
+ * resulting gutter is the ToC's own `.toc-menu` margin-right (0.75rem) at every
+ * width, i.e. exactly the spacing the stock UI already produced below the cap.
+ *
+ * Article measure is deliberately left at 46rem: widening it would stretch body
+ * text past a readable line length on large monitors. This also gives the
+ * `.tabset > .content` overflow hack in css/tabs.css more clearance, never
+ * less. */
+@media screen and (min-width: 1024px) {
+  aside.toc.sidebar {
+    margin-left: auto;
+  }
+}
+
+/* Branded footer (partials/footer.hbs), mirroring doc.owncloud.com.
+   Navy surface with three link columns + centered logo and copyright.
+   Selectors are qualified as `footer.footer` to match the stock UI's own
+   `footer.footer` specificity (0,1,1) and win on load order (owncloud.css
+   loads after site.css); a plain `.footer` (0,1,0) would lose the cascade. */
+footer.footer {
+  background-color: var(--oc-navy);
+  color: #8e8e8e;
+  padding: 0.5rem 1rem;
+  font-size: 0.83333rem;
+  line-height: 1.6;
+  border-top: 0;
+}
+
+footer.footer .container {
+  max-width: var(--container-max-width, 1152px);
+  margin: 0 auto;
+}
+
+footer.footer p {
+  margin: 0.5rem 0;
+}
+
+footer.footer a {
+  color: #aaa;
+}
+
+footer.footer .footer-logo {
+  text-align: center;
+  margin: 1rem 0 0.5rem;
+}
+
+footer.footer .footer-logo img {
+  height: 2rem;
+  width: auto;
+}
+
+.row-full {
+  width: 100%;
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.row-full div.col-third {
+  flex: auto;
+  text-align: left;
+}
+
+.footer-nav h4 {
+  color: #fff;
+  font-weight: 400;
+  margin: 20px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  margin: 0 20px;
+  padding: 0;
+}
+
+.footer-nav ul li a {
+  color: #aaa;
+}
